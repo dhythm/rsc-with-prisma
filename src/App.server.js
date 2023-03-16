@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Clock } from "./Clock.client";
 import { Hello } from "./Hello.server";
+import { SayHello } from "./SayHello.client";
 import { SearchField } from "./SearchField.client";
 import { UserList } from "./UserList.server";
 
@@ -27,6 +28,7 @@ export default function App({ selectedId, isEditing, searchText }) {
       </section>
 
       <section key={selectedId} className="col viewer">
+        <SayHello />
         <Suspense fallback={<div>Loading...</div>}>
           <Hello searchText={searchText} />
         </Suspense>

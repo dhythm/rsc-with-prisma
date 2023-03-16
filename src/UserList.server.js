@@ -6,8 +6,11 @@ export const UserList = () => {
   return users.length > 0 ? (
     <ul className="users-list">
       {users.map((user) => (
-        <li key={user.id}>
-          {user.name} ({user.id})
+        <li key={user.id} style={{ marginBottom: "1rem" }}>
+          <div>
+            {user.name} ({user.email})
+          </div>
+          <div>{user.id}</div>
         </li>
       ))}
     </ul>

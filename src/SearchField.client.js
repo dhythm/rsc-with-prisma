@@ -1,10 +1,10 @@
 import React, { useState, useTransition } from "react";
-// import { useLocation } from "./LocationContext.client";
+import { useLocation } from "./LocationContext.client";
 
 export const SearchField = () => {
   const [text, setText] = useState("");
   const [isSearching, startSearching] = useTransition();
-  // const [, setLocation] = useLocation();
+  const [, setLocation] = useLocation();
 
   return (
     <form
@@ -25,10 +25,10 @@ export const SearchField = () => {
           const newText = e.target.value;
           setText(newText);
           startSearching(() => {
-            // setLocation((prev) => ({
-            //   ...prev,
-            //   searchText: newText,
-            // }));
+            setLocation((prev) => ({
+              ...prev,
+              searchText: newText,
+            }));
           });
         }}
       />
