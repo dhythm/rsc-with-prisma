@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { createFromFetch } from "react-server-dom-webpack";
 import { LocationContext } from "./LocationContext.client";
 
@@ -12,7 +12,7 @@ export const Root = () => {
   );
 };
 
-const chunk = createFromFetch("/rsc");
+const chunk = createFromFetch(fetch("/rsc"));
 
 const Container = () => {
   return chunk.readRoot();
