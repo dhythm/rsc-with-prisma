@@ -1,0 +1,52 @@
+{
+  "name": "rsc-with-prisma",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:client:dev": "webpack --mode development",
+    "build:client:prod": "webpack --mode production",
+    "server:dev": "node --conditions=react-server server",
+    "start": "concurrently -n server,client -c auto \"npm run server:dev\" \"npm run build:client:dev\"",
+    "db:create": "docker-compose run -p 5432:5432 -d postgres",
+    "db:seed": "node prisma/seed.js",
+    "db:init": "docker rm -f $(docker ps -q -f 'NAME=rsc-with-prisma') && npm run db:create; sleep 5 && rm -fr prisma/migrations && prisma migrate dev --name init && npm run db:seed",
+    "db:migrate": "prisma migrate deploy --preview-feature",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.18.2",
+    "react": "0.0.0-experimental-0cc724c77-20211125",
+    "react-dom": "0.0.0-experimental-0cc724c77-20211125",
+    "react-error-boundary": "^3.1.4",
+    "react-fetch": "0.0.0-experimental-0cc724c77-20211125",
+    "react-prisma": "^4.11.0",
+    "react-server-dom-webpack": "0.0.0-experimental-0cc724c77-20211125"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/register": "^7.21.0",
+    "babel-loader": "^9.1.2",
+    "concurrently": "^7.6.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "2.8.4",
+    "prisma": "^4.11.0",
+    "rimraf": "^4.4.0",
+    "webpack": "^5.76.2",
+    "webpack-cli": "^5.0.1"
+  }
+}
