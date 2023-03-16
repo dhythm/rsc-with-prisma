@@ -1,4 +1,8 @@
 import { Suspense } from "react";
+import { Clock } from "./Clock.client";
+import { Hello } from "./Hello.server";
+import { SearchField } from "./SearchField.client";
+import { UserList } from "./UserList.server";
 
 export default function App({ selectedId, isEditing, searchText }) {
   return (
@@ -9,16 +13,23 @@ export default function App({ selectedId, isEditing, searchText }) {
         </section>
 
         <section className="sidebar-menu" role="menubar">
-          <div>Sidebar Menu</div>
+          <div>
+            <SearchField />
+            <Clock />
+          </div>
         </section>
 
         <nav>
-          <Suspense fallback={<div>Loading...</div>}>Nav</Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            <UserList />
+          </Suspense>
         </nav>
       </section>
 
       <section key={selectedId} className="col viewer">
-        <Suspense fallback={<div>Loading...</div>}>Viewer</Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Hello searchText={searchText} />
+        </Suspense>
       </section>
     </div>
   );

@@ -7,8 +7,8 @@ import { createContext, useContext } from "react";
  *    searchText: string;
  *  }
  */
-export const LocationContext = createContext(null)
+export const LocationContext = createContext();
 
 export const useLocation = () => {
-  return useContext(LocationContext)
-}
+  return useContext(LocationContext);
+};

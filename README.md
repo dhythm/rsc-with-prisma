@@ -78,6 +78,8 @@ touch src/Root.client.jsx
 touch src/LocationContext.client.jsx
 ```
 
+Create more client-side components.
+
 ### Create server-side
 
 ```sh
@@ -95,6 +97,8 @@ touch server/package.json
 touch src/App.server.jsx
 ```
 
+Create more server-side components.
+
 ### Create DB
 
 ```sh
@@ -104,13 +108,28 @@ npx prisma init --datasource-provider postgresql
 prisma generate
 ```
 
-```
+```sh
 touch prisma/seed.js
 touch docker-compose.yml
 ```
 
 Update `.env`, and run
 
-```
+```sh
 npm run db:init
+```
+
+Create a component for connecting DB.
+
+```sh
+touch db.server.js
+```
+
+### Getting Started
+
+```sh
+npm install --force
+prisma generate
+npm run db:init
+npm run start
 ```
