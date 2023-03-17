@@ -1,6 +1,6 @@
-# React Server Component with Prisma
+# React Server Components with Prisma
 
-## Setting Environement
+## Setting Environment
 
 ### Install core libraries
 
